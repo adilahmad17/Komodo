@@ -40,6 +40,10 @@ struct atag_cmdline {
 static struct atag_header *g_atags;
 static const char qemu_cmdline[] = "console=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait earlyprintk loglevel=8 init=/bin/bash nosmp";
 
+// ADIL.
+// static const char qemu_cmdline[] = "rw earlyprintk loglevel=8 console=ttyAMA0,115200 root=/dev/mmcblk0p2";
+
+
 void atags_init(void *atags_ptr)
 {
     struct atag_header *t;

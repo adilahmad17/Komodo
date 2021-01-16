@@ -320,7 +320,7 @@ void __attribute__((noreturn)) main(void)
 
     console_printf("RNG init...\n");
     rng_init();
-    
+
     /* init the monitor by setting up the secure physbase */
     uintptr_t *monitor_monitor_physbase
         = (uintptr_t *)(&g_monitor_physbase - &monitor_image_start + KOM_MON_VBASE);
@@ -360,6 +360,9 @@ void __attribute__((noreturn)) main(void)
     console_printf("entering kernel...\n");
     typedef void kernel_entry(uintptr_t zero, uintptr_t boardid, void *atags);
     ((kernel_entry *)0x8000)(0, 0xc43, (void *)0x100);
+
+    // ADIL.
+    serial_putc('E');
 
     while (1) {}
 }

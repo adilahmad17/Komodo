@@ -2,7 +2,7 @@ ifneq ($(KERNELRELEASE),)
 
 ccflags-y := -I$(M)/../include
 obj-m := komodo.o
-komodo-y := driver.o smc.o smcapi.o pgalloc.o encloader.o enc.elfbin
+komodo-y := driver.o smc.o smcapi.o pgalloc.o encloader.o # enc.elfbin
 
 else
 
@@ -14,5 +14,8 @@ PWD := $(shell pwd)
 
 default:
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+
+clean:
+	rm -rf *.o modules.order Module.symvers *.ko *.cmd* *.mod*
 
 endif

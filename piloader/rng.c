@@ -30,6 +30,8 @@ static uint32_t rng_reg_read(uint32_t reg)
 
 void rng_init(void)
 {
+
+    // ADIL. commented the whole thing
     uint32_t val;
 
     val = rng_reg_read(RNG_CTRL);
@@ -44,6 +46,7 @@ void rng_init(void)
 
     // test the RNG by making sure we can read a word
     console_printf("RNG wait for test word\n");
+    // ADIL. removed this for now
     while (rng_reg_read(RNG_STATUS) >> 24 == 0) {}
     val = rng_reg_read(RNG_DATA);
 
